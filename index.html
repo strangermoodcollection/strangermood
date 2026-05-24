@@ -1,277 +1,1140 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STRANGER MOOD — Streetwear</title>
-  <meta name="description" content="STRANGER MOOD — Streetwear premium. Design glassmorphism bulle d’eau, mode sombre par défaut." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- Font (optionnel) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>STRANGER MOOD</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#fff;
+  color:#111;
+  overflow-x:hidden;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:999;
+
+  background:rgba(255,255,255,0.9);
+
+  backdrop-filter:blur(10px);
+
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+
+.nav-container{
+  width:min(1400px,92%);
+  margin:auto;
+
+  height:72px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:1.2rem;
+  font-weight:800;
+  letter-spacing:-0.04em;
+}
+
+.nav-links{
+  display:flex;
+  gap:32px;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#111;
+  font-size:0.95rem;
+  font-weight:500;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.theme-btn{
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  border:none;
+
+  background:#f2f2f2;
+
+  cursor:pointer;
+
+  font-size:1rem;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  height:100svh;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.hero video,
+.hero img{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.15)
+  );
+}
+
+.hero-content{
+  position:absolute;
+  bottom:90px;
+  left:7%;
+
+  color:white;
+
+  z-index:2;
+}
+
+.hero-sub{
+  font-size:0.95rem;
+  margin-bottom:12px;
+}
+
+.hero-title{
+  font-size:clamp(3.5rem,9vw,8rem);
+  line-height:0.9;
+  font-weight:800;
+  letter-spacing:-0.06em;
+}
+
+.hero-buttons{
+  margin-top:32px;
+
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:16px 28px;
+
+  border-radius:999px;
+
+  border:none;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.btn-white{
+  background:white;
+  color:black;
+}
+
+.btn-dark{
+  background:#111;
+  color:white;
+}
+
+.btn:hover{
+  transform:scale(1.04);
+}
+
+/* =========================================================
+   FEATURED SECTION
+========================================================= */
+
+.section{
+  width:min(1400px,92%);
+  margin:auto;
+
+  padding:90px 0;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+
+  margin-bottom:40px;
+}
+
+.section-title{
+  font-size:2.6rem;
+  font-weight:800;
+  letter-spacing:-0.04em;
+}
+
+.section-sub{
+  color:#666;
+  margin-top:10px;
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.product-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(280px,1fr));
+
+  gap:24px;
+}
+
+.product-card{
+  cursor:pointer;
+}
+
+.product-image-wrap{
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:24px;
+
+  background:#f5f5f5;
+}
+
+.product-image{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+
+  transition:0.5s;
+}
+
+.product-card:hover .product-image{
+  transform:scale(1.08);
+}
+
+.product-tag{
+  position:absolute;
+  top:16px;
+  left:16px;
+
+  background:white;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  font-size:0.8rem;
+  font-weight:600;
+}
+
+.product-info{
+  padding-top:18px;
+}
+
+.product-name{
+  font-size:1.1rem;
+  font-weight:700;
+}
+
+.product-category{
+  margin-top:5px;
+
+  color:#666;
+
+  font-size:0.92rem;
+}
+
+.product-price{
+  margin-top:14px;
+
+  font-weight:700;
+}
+
+/* =========================================================
+   BIG BANNER
+========================================================= */
+
+.banner{
+  position:relative;
+
+  height:650px;
+
+  overflow:hidden;
+
+  border-radius:40px;
+
+  margin-top:40px;
+}
+
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.banner-overlay{
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.15)
+  );
+}
+
+.banner-content{
+  position:absolute;
+  left:60px;
+  bottom:60px;
+
+  color:white;
+}
+
+.banner-title{
+  font-size:4rem;
+  line-height:0.9;
+  font-weight:800;
+  letter-spacing:-0.05em;
+}
+
+/* =========================================================
+   MEMBERSHIP
+========================================================= */
+
+.member-box{
+  background:#111;
+  color:white;
+
+  border-radius:40px;
+
+  padding:60px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+
+  flex-wrap:wrap;
+}
+
+.member-title{
+  font-size:3rem;
+  line-height:0.95;
+  font-weight:800;
+}
+
+.member-desc{
+  margin-top:18px;
+
+  color:#aaa;
+
+  max-width:600px;
+
+  line-height:1.8;
+}
+
+.member-form{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.member-input{
+  width:320px;
+  max-width:100%;
+
+  height:58px;
+
+  border:none;
+
+  border-radius:999px;
+
+  padding:0 24px;
+
+  font-size:1rem;
+}
+
+.member-btn{
+  height:58px;
+
+  padding:0 30px;
+
+  border:none;
+
+  border-radius:999px;
+
+  background:white;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:80px 0 40px;
+}
+
+.footer-top{
+  width:min(1400px,92%);
+  margin:auto;
+
+  display:flex;
+  justify-content:space-between;
+  gap:50px;
+  flex-wrap:wrap;
+
+  padding-bottom:40px;
+
+  border-bottom:1px solid #eee;
+}
+
+.footer-logo{
+  font-size:2rem;
+  font-weight:800;
+}
+
+.footer-links{
+  display:flex;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.footer-links h4{
+  margin-bottom:14px;
+}
+
+.footer-links a{
+  display:block;
+
+  margin-bottom:10px;
+
+  text-decoration:none;
+  color:#666;
+}
+
+.footer-bottom{
+  width:min(1400px,92%);
+  margin:auto;
+
+  padding-top:30px;
+
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:20px;
+
+  color:#666;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero-content{
+    left:24px;
+    bottom:50px;
+  }
+
+  .hero-title{
+    font-size:4rem;
+  }
+
+  .banner{
+    height:500px;
+    border-radius:28px;
+  }
+
+  .banner-content{
+    left:24px;
+    bottom:24px;
+  }
+
+  .banner-title{
+    font-size:2.6rem;
+  }
+
+  .member-box{
+    padding:34px 24px;
+  }
+
+  .member-title{
+    font-size:2.2rem;
+  }
+
+}
+
+.dark{
+  background:#0b0b0b;
+  color:white;
+}
+
+.dark nav{
+  background:rgba(15,15,15,0.85);
+  border-color:rgba(255,255,255,0.08);
+}
+
+.dark .nav-links a{
+  color:white;
+}
+
+.dark .theme-btn{
+  background:#222;
+  color:white;
+}
+
+.dark .section-sub,
+.dark .product-category,
+.dark .footer-bottom,
+.dark .footer-links a{
+  color:#999;
+}
+
+.dark .product-image-wrap{
+  background:#151515;
+}
+
+
+
+
+/* =========================================================
+   SEARCH BAR
+========================================================= */
+
+.search-wrapper{
+
+  position:fixed;
+
+  top:84px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:min(900px,92%);
+
+  z-index:998;
+
+}
+
+.search-bar{
+
+  height:64px;
+
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  padding:0 22px;
+
+  border-radius:999px;
+
+  background:rgba(0,0,0,0.35);
+
+  backdrop-filter:blur(24px);
+
+  -webkit-backdrop-filter:blur(24px);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,0.15);
+
+  transition:0.3s;
+}
+
+.search-bar:hover{
+
+  background:rgba(0,0,0,0.45);
+
+  transform:scale(1.01);
+
+}
+
+.search-bar svg{
+
+  color:white;
+
+  opacity:0.7;
+
+  flex-shrink:0;
+
+}
+
+.search-bar input{
+
+  width:100%;
+
+  height:100%;
+
+  background:transparent;
+
+  border:none;
+
+  outline:none;
+
+  color:white;
+
+  font-size:1rem;
+
+  font-family:'Inter',sans-serif;
+
+}
+
+.search-bar input::placeholder{
+
+  color:rgba(255,255,255,0.6);
+
+}
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+body:not(.dark) .search-bar{
+
+  background:rgba(255,255,255,0.55);
+
+  border:1px solid rgba(0,0,0,0.06);
+
+}
+
+body:not(.dark) .search-bar svg{
+
+  color:#111;
+
+}
+
+body:not(.dark) .search-bar input{
+
+  color:#111;
+
+}
+
+body:not(.dark) .search-bar input::placeholder{
+
+  color:rgba(0,0,0,0.45);
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+  .search-wrapper{
+
+    top:78px;
+
+    width:94%;
+
+  }
+
+  .search-bar{
+
+    height:58px;
+
+    padding:0 18px;
+
+  }
+
+}
+</style>
 </head>
+<body>
 
-<body class="theme-dark">
-  <!-- Background (bubbles + grain) -->
-  <div class="bg" aria-hidden="true">
-    <div class="bubble b1"></div>
-    <div class="bubble b2"></div>
-    <div class="bubble b3"></div>
-    <div class="bubble b4"></div>
-    <div class="grain"></div>
+<!-- ======================================================
+NAVBAR
+====================================================== -->
+
+<nav>
+
+  <div class="nav-container">
+
+    <div class="logo">
+      STRANGER MOOD
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#shop">Nouveautés</a></li>
+      <li><a href="#shop">Homme</a></li>
+      <li><a href="#shop">Femme</a></li>
+      <li><a href="#member">Membres</a></li>
+    </ul>
+
+    <div class="nav-actions">
+
+      <button class="theme-btn" onclick="toggleTheme()">
+        🌙
+      </button>
+
+    </div>
+
   </div>
 
-  <!-- Header -->
-  <header class="topbar glass">
-    <div class="container topbar__inner">
-      <a class="brand" href="#home" aria-label="Accueil">
-        <span class="brand__mark">SM</span>
-        <span class="brand__name">STRANGER MOOD</span>
-      </a>
+</nav>
 
-      <nav class="nav" id="nav">
-        <a href="#shop">Shop</a>
-        <a href="#lookbook">Lookbook</a>
-        <a href="#about">À propos</a>
-        <a href="#contact">Contact</a>
-      </nav>
 
-      <div class="topbar__actions">
-        <!-- bouton thème (facultatif, mode sombre par défaut) -->
-        <button class="iconbtn" id="themeBtn" type="button" aria-label="Changer le thème" title="Thème">
-          <span class="icon">◐</span>
-        </button>
 
-        <!-- panier -->
-        <button class="iconbtn" id="cartBtn" type="button" aria-label="Panier" title="Panier">
-          <span class="icon">🛒</span>
-          <span class="badge" id="cartCount">0</span>
-        </button>
 
-        <!-- menu mobile -->
-        <button class="iconbtn burger" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+<!-- SEARCH BAR -->
+
+<div class="search-wrapper">
+
+  <div class="search-bar">
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor">
+
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z"/>
+
+    </svg>
+
+    <input
+      type="text"
+      placeholder="Rechercher vêtements, collections, sneakers..."
+      id="searchInput">
+
+  </div>
+
+</div>
+
+<!-- ======================================================
+HERO
+====================================================== -->
+
+<section class="hero">
+
+  <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1600&auto=format&fit=crop">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+
+    <div class="hero-sub">
+      Nouvelle Collection 2026
     </div>
-  </header>
 
-  <main id="home">
-    <!-- HERO -->
-    <section class="container hero">
-      <div class="hero__card glass">
-        <p class="pill">DROP • 2026</p>
-        <h1>Streetwear premium.<br><span class="glow">Vibe nocturne</span>.</h1>
-        <p class="sub">
-          Pièces essentielles, coupe clean, signature minimaliste.
-          Conçu pour ceux qui avancent différemment.
-        </p>
+    <h1 class="hero-title">
+      FREEDOM<br>
+      STREET
+    </h1>
 
-        <div class="hero__cta">
-          <a class="btn primary" href="#shop">Découvrir le shop</a>
-          <button class="btn" id="notifyBtn" type="button">Recevoir les drops</button>
-        </div>
+    <div class="hero-buttons">
 
-        <div class="hero__stats">
-          <div class="stat">
-            <span class="stat__n">4.8</span>
-            <span class="stat__t">Avis</span>
-          </div>
-          <div class="stat">
-            <span class="stat__n">72h</span>
-            <span class="stat__t">Expédition</span>
-          </div>
-          <div class="stat">
-            <span class="stat__n">∞</span>
-            <span class="stat__t">Mood</span>
-          </div>
-        </div>
-      </div>
+      <button class="btn btn-white">
+        Acheter
+      </button>
 
-      <div class="hero__preview glass">
-        <div class="preview__top">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="preview__label">Product Spotlight</span>
-        </div>
+      <button class="btn btn-dark">
+        Explorer
+      </button>
 
-        <div class="product-spot">
-          <div class="spot__img" aria-hidden="true"></div>
-          <div class="spot__info">
-            <h3>Débardeur “Vibes Street”</h3>
-            <p>Look minimal — détails contrastés — logo discret.</p>
-            <div class="spot__row">
-              <span class="price">12 900 XOF</span>
-              <button class="btn small" data-add="tank-vibes">Ajouter</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="chips">
-          <span class="chip">Coupe Regular</span>
-          <span class="chip">Coton doux</span>
-          <span class="chip">Logo signature</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- SHOP -->
-    <section class="container section" id="shop">
-      <div class="section__head">
-        <h2>Shop</h2>
-
-        <div class="filters glass">
-          <input class="input" id="search" type="search" placeholder="Rechercher (débardeur, hoodie…)" />
-          <select class="select" id="sort">
-            <option value="featured">Trier: Sélection</option>
-            <option value="priceAsc">Prix: croissant</option>
-            <option value="priceDesc">Prix: décroissant</option>
-            <option value="nameAsc">Nom: A → Z</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="grid" id="productGrid">
-        <!-- Cartes produits injectées par JS -->
-      </div>
-    </section>
-
-    <!-- LOOKBOOK -->
-    <section class="container section" id="lookbook">
-      <div class="section__head">
-        <h2>Lookbook</h2>
-        <p class="muted">Ajoute tes photos ici plus tard (studio / street).</p>
-      </div>
-
-      <div class="masonry">
-        <div class="tile glass t1" aria-label="Photo lookbook 1"></div>
-        <div class="tile glass t2" aria-label="Photo lookbook 2"></div>
-        <div class="tile glass t3" aria-label="Photo lookbook 3"></div>
-        <div class="tile glass t4" aria-label="Photo lookbook 4"></div>
-        <div class="tile glass t5" aria-label="Photo lookbook 5"></div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="container section" id="about">
-      <div class="about glass">
-        <div>
-          <h2>À propos</h2>
-          <p class="muted">
-            STRANGER MOOD, c’est l’énergie de la rue + le minimal premium.
-            Des silhouettes propres, un branding discret, et des pièces faites pour durer.
-          </p>
-
-          <div class="about__bullets">
-            <div class="mini glass">
-              <span class="mini__k">Qualité</span>
-              <span class="mini__v">Tissus sélectionnés</span>
-            </div>
-            <div class="mini glass">
-              <span class="mini__k">Design</span>
-              <span class="mini__v">Signature minimal</span>
-            </div>
-            <div class="mini glass">
-              <span class="mini__k">Vibe</span>
-              <span class="mini__v">Nocturne & clean</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="about__card glass">
-          <p class="pill">PROMESSE</p>
-          <h3>Built different.</h3>
-          <p class="muted">
-            Une marque pensée pour les créatifs, les athlètes, les rêveurs.
-            Porte le mood. Crée ton propre chemin.
-          </p>
-          <a class="btn primary full" href="#contact">Collaborer</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="container section" id="contact">
-      <div class="section__head">
-        <h2>Contact</h2>
-        <p class="muted">Commande, collab, wholesale — écris-nous.</p>
-      </div>
-
-      <div class="contact">
-        <form class="glass form" id="contactForm">
-          <label>
-            <span>Nom</span>
-            <input class="input" name="name" required placeholder="Ton nom" />
-          </label>
-
-          <label>
-            <span>Email</span>
-            <input class="input" name="email" type="email" required placeholder="ex: you@mail.com" />
-          </label>
-
-          <label class="full">
-            <span>Message</span>
-            <textarea class="input" name="message" rows="5" required placeholder="Dis-nous ce dont tu as besoin…"></textarea>
-          </label>
-
-          <button class="btn primary full" type="submit">Envoyer</button>
-          <p class="tiny muted">* Formulaire démo (JS). Connectable au backend plus tard.</p>
-        </form>
-
-        <div class="glass contact__side">
-          <h3>Infos</h3>
-          <p class="muted">Instagram: <strong>@stranger_mood_collection</strong></p>
-          <div class="divider"></div>
-          <p class="muted">Livraison: <strong>Abidjan → partout</strong></p>
-          <p class="muted">Support: <strong>24–48h</strong></p>
-          <div class="divider"></div>
-          <button class="btn" id="copyBtn" type="button">Copier @Instagram</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="container footer">
-      <div class="glass footer__inner">
-        <span class="muted">© <span id="year"></span> STRANGER MOOD</span>
-        <span class="muted">Made with glass vibes ✦</span>
-      </div>
-    </footer>
-  </main>
-
-  <!-- DRAWER PANIER -->
-  <aside class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer__backdrop" data-close="drawer"></div>
-
-    <div class="drawer__panel glass" role="dialog" aria-label="Panier">
-      <div class="drawer__head">
-        <h3>Panier</h3>
-        <button class="iconbtn" data-close="drawer" aria-label="Fermer">✕</button>
-      </div>
-
-      <div class="drawer__body" id="cartItems">
-        <!-- Items injectés par JS -->
-      </div>
-
-      <div class="drawer__foot">
-        <div class="row">
-          <span class="muted">Total</span>
-          <strong id="cartTotal">0 XOF</strong>
-        </div>
-        <button class="btn primary full" id="checkoutBtn" type="button">Commander</button>
-        <p class="tiny muted">Démo : connectable à WhatsApp / paiement ensuite.</p>
-      </div>
     </div>
-  </aside>
 
-  <!-- TOAST -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
 
-  <!-- JS -->
-  <script src="script.js"></script>
+</section>
+
+<!-- ======================================================
+PRODUCTS
+====================================================== -->
+
+<section class="section" id="shop">
+
+  <div class="section-head">
+
+    <div>
+
+      <h2 class="section-title">
+        Tendances du moment
+      </h2>
+
+      <p class="section-sub">
+        Les pièces les plus populaires de la collection.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div id="productsWrap">
+
+    <div class="product-grid"></div>
+
+  </div>
+
+</section>
+
+<!-- ======================================================
+BANNER
+====================================================== -->
+
+<section class="section">
+
+  <div class="banner">
+
+    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1600&auto=format&fit=crop">
+
+    <div class="banner-overlay"></div>
+
+    <div class="banner-content">
+
+      <div class="hero-sub">
+        STREETWEAR • PREMIUM
+      </div>
+
+      <h2 class="banner-title">
+        MOVE<br>
+        DIFFERENT
+      </h2>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ======================================================
+MEMBER
+====================================================== -->
+
+<section class="section" id="member">
+
+  <div class="member-box">
+
+    <div>
+
+      <h2 class="member-title">
+        MEMBERS<br>
+        ACCESS
+      </h2>
+
+      <p class="member-desc">
+        Accédez à votre carte membre, vos réductions exclusives et vos commandes.
+      </p>
+
+    </div>
+
+    <div class="member-form">
+
+      <input
+      type="text"
+      class="member-input"
+      id="clientIdInput"
+      placeholder="Votre identifiant">
+
+      <button class="member-btn" onclick="accederClient()">
+        Continuer
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ======================================================
+FOOTER
+====================================================== -->
+
+<footer>
+
+  <div class="footer-top">
+
+    <div>
+
+      <div class="footer-logo">
+        STRANGER MOOD
+      </div>
+
+    </div>
+
+    <div class="footer-links">
+
+      <div>
+        <h4>Boutique</h4>
+        <a href="#">Nouveautés</a>
+        <a href="#">Collections</a>
+      </div>
+
+      <div>
+        <h4>Aide</h4>
+        <a href="#">Livraison</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div>
+        <h4>Réseaux</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+    <div>
+      © 2026 STRANGER MOOD
+    </div>
+
+    <div>
+      STREETWEAR CULTURE
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+
+/* ======================================================
+CONFIG
+====================================================== */
+
+const API = 'https://backend-xxgf.onrender.com';
+
+const CLIENT_PAGE = 'client.html';
+
+/* ======================================================
+THEME
+====================================================== */
+
+function toggleTheme(){
+
+  document.body.classList.toggle('dark');
+
+  localStorage.setItem(
+    'theme',
+    document.body.classList.contains('dark')
+    ? 'dark'
+    : 'light'
+  );
+
+}
+
+if(localStorage.getItem('theme') === 'dark'){
+  document.body.classList.add('dark');
+}
+
+/* ======================================================
+PRODUCTS
+====================================================== */
+
+let allProduits = [];
+
+(async () => {
+
+  try {
+
+    const r = await fetch(`${API}/vetement/produits`);
+
+    const data = await r.json();
+
+    allProduits = data.produits || [];
+
+    renderProducts(allProduits);
+
+  } catch(e){
+
+    document.querySelector('.product-grid').innerHTML = `
+      <p>Impossible de charger les produits.</p>
+    `;
+
+  }
+
+})();
+
+function renderProducts(list){
+
+  document.querySelector('.product-grid').innerHTML =
+  list.map(productCard).join('');
+
+}
+
+function productCard(p){
+
+  return `
+
+  <div class="product-card">
+
+    <div class="product-image-wrap">
+
+      <img
+      src="${p.image_url || 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop'}"
+      class="product-image">
+
+      <div class="product-tag">
+        ${p.collection || 'NEW'}
+      </div>
+
+    </div>
+
+    <div class="product-info">
+
+      <div class="product-name">
+        ${p.nom}
+      </div>
+
+      <div class="product-category">
+        ${p.description || 'Streetwear premium'}
+      </div>
+
+      <div class="product-price">
+        ${Number(p.prix || 0).toLocaleString('fr-FR')} FCFA
+      </div>
+
+    </div>
+
+  </div>
+
+  `;
+
+}
+
+/* ======================================================
+CLIENT ACCESS
+====================================================== */
+
+async function accederClient(){
+
+  const id = document
+  .getElementById('clientIdInput')
+  .value
+  .trim()
+  .toUpperCase();
+
+  if(!id) return;
+
+  try{
+
+    const r = await fetch(
+      `${API}/vetement/client/${encodeURIComponent(id)}`
+    );
+
+    if(r.ok){
+
+      window.open(
+        `${CLIENT_PAGE}?id=${encodeURIComponent(id)}&api=${encodeURIComponent(API)}`,
+        '_blank'
+      );
+
+    } else {
+
+      alert('Identifiant introuvable');
+
+    }
+
+  } catch {
+
+    window.open(
+      `${CLIENT_PAGE}?id=${encodeURIComponent(id)}&api=${encodeURIComponent(API)}`,
+      '_blank'
+    );
+
+  }
+
+}
+
+
+
+/* ======================================================
+SEARCH
+====================================================== */
+
+document
+.getElementById('searchInput')
+.addEventListener('input', e => {
+
+  const value = e.target.value.toLowerCase();
+
+  const filtered = allProduits.filter(p => {
+
+    return (
+      (p.nom || '').toLowerCase().includes(value) ||
+      (p.description || '').toLowerCase().includes(value) ||
+      (p.collection || '').toLowerCase().includes(value)
+    );
+
+  });
+
+  renderProducts(filtered);
+
+});
+
+</script>
+
 </body>
 </html>
