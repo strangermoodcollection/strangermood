@@ -10,27 +10,48 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
   background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 999px;
-  padding: 12px 20px;
+  border-radius: 16px;
+
+  padding: 14px 20px;
+  margin-top: 16px;
+
   font-size: 0.95rem;
   font-weight: 700;
   font-family: 'Inter', sans-serif;
   color: #111;
+
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
   width: 100%;
 }
 
 .ham-cart-btn:hover {
   background: rgba(0, 0, 0, 0.09);
+  transform: scale(1.02);
+}
+
+.ham-cart-btn svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.ham-cart-btn .ham-cart-count {
+  margin-left: auto;
 }
 
 .dark .ham-cart-btn {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(255, 255, 255, 0.1);
   color: white;
+}
+
+.dark .ham-cart-btn:hover {
+  background: rgba(255, 255, 255, 0.11);
 }
 
 /* =========================================================
