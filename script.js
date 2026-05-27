@@ -25,6 +25,13 @@ function toggleMenu() {
   document.body.style.overflow = isOpen ? '' : 'hidden';
 }
 
+
+
+function togglePanier() {
+  const panel = document.getElementById('cartPanel');
+  panel.classList.toggle('open');
+}
+
 // Fermer en scrollant (desktop)
 window.addEventListener('scroll', () => {
   const menu = document.getElementById('hamburgerMenu');
@@ -119,6 +126,10 @@ function productCard(p){
         ${p.collection || 'NEW'}
       </div>
 
+      <button class="add-to-cart-btn" onclick="ajouterAuPanier(${p.id}, '${(p.nom||'').replace(/'/g,"\\'")}', ${p.prix||0}, '${p.image_url||''}')">
+        Acheter
+      </button>
+
     </div>
 
     <div class="product-info">
@@ -142,6 +153,91 @@ function productCard(p){
   `;
 
 }
+
+
+
+
+
+/* ======================================================
+PANIER
+====================================================== */
+
+let panier = JSON.parse(localStorage.getItem('panier') || '[]');
+
+function majAffichagePanier() {
+
+  const badge = document.getElementById('cartBadge');
+  const count = document.getElementById('hamCartCount');
+  const itemsEl = document.getElementById('hamCartItems');
+  const totalEl = document.getElementById('hamCartTotal');
+  const totalPrice = document.getElementById('hamCartTotalPrice');
+
+  const total = panier.reduce((s, i) => s + i.quantite, 0);
+  const prix = panier.reduce((s, i) => s + i.prix * i.quantite, 0);
+
+  // Badge sur l'icône burger
+  if (total > 0) {
+    badge.style.display = 'flex';
+    badge.textContent = total > 99 ? '99+' : total;
+  } else {
+    badge.style.display = 'none';
+  }
+
+  // Compteur dans le menu
+  count.textContent = total;
+
+  // Liste des articles
+  if (panier.length === 0) {
+    itemsEl.innerHTML = '<p class="ham-cart-empty">Votre panier est vide.</p>';
+    totalEl.style.display = 'none';
+  } else {
+    itemsEl.innerHTML = panier.map(item => `
+      <div class="ham-cart-item">
+        <img src="${item.image || 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=200'}" class="ham-cart-img">
+        <div class="ham-cart-info">
+          <div class="ham-cart-name">${item.nom}</div>
+          <div class="ham-cart-price">${Number(item.prix).toLocaleString('fr-FR')} FCFA</div>
+        </div>
+        <div class="ham-cart-actions">
+          <button onclick="changerQuantite(${item.id}, -1)">−</button>
+          <span>${item.quantite}</span>
+          <button onclick="changerQuantite(${item.id}, 1)">+</button>
+        </div>
+      </div>
+    `).join('');
+    totalEl.style.display = 'flex';
+    totalPrice.textContent = prix.toLocaleString('fr-FR') + ' FCFA';
+  }
+
+  localStorage.setItem('panier', JSON.stringify(panier));
+}
+
+function ajouterAuPanier(id, nom, prix, image) {
+  const exist = panier.find(i => i.id === id);
+  if (exist) {
+    exist.quantite++;
+  } else {
+    panier.push({ id, nom, prix, image, quantite: 1 });
+  }
+  majAffichagePanier();
+
+  // Petite animation sur le badge
+  const badge = document.getElementById('cartBadge');
+  badge.classList.remove('badge-pop');
+  void badge.offsetWidth;
+  badge.classList.add('badge-pop');
+}
+
+function changerQuantite(id, delta) {
+  const item = panier.find(i => i.id === id);
+  if (!item) return;
+  item.quantite += delta;
+  if (item.quantite <= 0) panier = panier.filter(i => i.id !== id);
+  majAffichagePanier();
+}
+
+// Init au chargement
+majAffichagePanier();
 
 /* ======================================================
 CLIENT ACCESS
