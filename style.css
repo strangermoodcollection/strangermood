@@ -736,6 +736,7 @@ body:not(.dark) .search-bar input::placeholder{
   justify-content: center;
   gap: 5px;
   padding: 0;
+  position: relative;
 }
 
 .burger-btn span {
