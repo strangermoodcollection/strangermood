@@ -1,0 +1,337 @@
+/* =========================================================
+   CART BADGE
+========================================================= */
+
+/* =========================================================
+   BOUTON PANIER DANS LE MENU
+========================================================= */
+
+.ham-cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  color: #111;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.ham-cart-btn:hover {
+  background: rgba(0, 0, 0, 0.09);
+}
+
+.dark .ham-cart-btn {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* =========================================================
+   SOUS-PANNEAU PANIER
+========================================================= */
+
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100svh;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 30px 24px 40px;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-panel.open {
+  right: 0;
+}
+
+.dark .cart-panel {
+  background: rgba(10, 10, 10, 0.8);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cart-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .cart-panel-header {
+  color: white;
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.cart-back-btn {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.cart-back-btn:hover {
+  color: #111;
+}
+
+.dark .cart-back-btn {
+  color: #aaa;
+}
+
+.dark .cart-back-btn:hover {
+  color: white;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  background: #e53935;
+  color: white;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  pointer-events: none;
+  border: 2px solid white;
+}
+
+.dark .cart-badge {
+  border-color: #0b0b0b;
+}
+
+@keyframes badgePop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+.badge-pop {
+  animation: badgePop 0.3s ease;
+}
+
+/* =========================================================
+   BOUTON ACHETER SUR LES CARTES
+========================================================= */
+
+.add-to-cart-btn {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  color: #111;
+  font-weight: 700;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+
+  padding: 12px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.product-card:hover .add-to-cart-btn {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* =========================================================
+   PANIER DANS LE MENU
+========================================================= */
+
+.ham-cart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.ham-cart-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111;
+}
+
+.dark .ham-cart-title {
+  color: white;
+}
+
+.ham-cart-count {
+  background: #e53935;
+  color: white;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  padding: 1px 7px;
+  font-weight: 700;
+}
+
+.ham-cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 260px;
+  padding-right: 4px;
+}
+
+.ham-cart-empty {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.ham-cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 14px;
+  padding: 8px;
+}
+
+.dark .ham-cart-item {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ham-cart-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.ham-cart-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ham-cart-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #111;
+}
+
+.dark .ham-cart-name {
+  color: white;
+}
+
+.ham-cart-price {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+.dark .ham-cart-price {
+  color: #aaa;
+}
+
+.ham-cart-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ham-cart-actions button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.08);
+  color: #111;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.dark .ham-cart-actions button {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.ham-cart-actions span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 16px;
+  text-align: center;
+  color: #111;
+}
+
+.dark .ham-cart-actions span {
+  color: white;
+}
+
+.ham-cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  color: #111;
+}
+
+.dark .ham-cart-total {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+/* touch sur mobile */
+@media(max-width:768px){
+  .add-to-cart-btn {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
