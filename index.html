@@ -47,11 +47,33 @@ NAVBAR
 
     <div class="nav-actions">
 
-      <button class="theme-btn" onclick="toggleTheme()">
-        🌙
-      </button>
+  <button class="burger-btn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-    </div>
+</div>
+
+<!-- MENU HAMBURGER -->
+<div class="hamburger-menu" id="hamburgerMenu">
+
+  <div class="ham-links">
+    <a href="#shop" onclick="toggleMenu()">Nouveautés</a>
+    <a href="#shop" onclick="toggleMenu()">Homme</a>
+    <a href="#shop" onclick="toggleMenu()">Femme</a>
+    <a href="#member" onclick="toggleMenu()">Membres</a>
+  </div>
+
+  <div class="ham-bottom">
+    <span>Mode sombre</span>
+    <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+  </div>
+
+</div>
+
+<!-- OVERLAY -->
+<div class="ham-overlay" id="hamOverlay" onclick="toggleMenu()"></div>
 
   </div>
 
