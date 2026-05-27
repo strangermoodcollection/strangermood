@@ -8,6 +8,45 @@ const API = 'https://backend-xxgf.onrender.com';
 
 const CLIENT_PAGE = 'client.html';
 
+
+
+
+/* ======================================================
+HAMBURGER MENU
+====================================================== */
+function toggleMenu() {
+  const menu = document.getElementById('hamburgerMenu');
+  const overlay = document.getElementById('hamOverlay');
+  const isOpen = menu.classList.contains('open');
+
+  menu.classList.toggle('open');
+  overlay.classList.toggle('open');
+
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+
+// Fermer en scrollant (desktop)
+window.addEventListener('scroll', () => {
+  const menu = document.getElementById('hamburgerMenu');
+  if (menu.classList.contains('open')) {
+    toggleMenu();
+  }
+}, { passive: true });
+
+// Fermer en swipant (mobile) — détecte un glissement vertical
+let touchStartY = 0;
+
+window.addEventListener('touchstart', e => {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+window.addEventListener('touchmove', e => {
+  const menu = document.getElementById('hamburgerMenu');
+  if (!menu.classList.contains('open')) return;
+
+  const deltaY = Math.abs(e.touches[0].clientY - touchStartY);
+  if (deltaY > 40) toggleMenu();
+}, { passive: true });
 /* ======================================================
 THEME
 ====================================================== */
