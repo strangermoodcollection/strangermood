@@ -6,6 +6,7 @@
 
 <title>STRANGER MOOD</title>
 <link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="panier.css"/>
 
 
 
@@ -51,10 +52,12 @@ NAVBAR
     <span></span>
     <span></span>
     <span></span>
+    <div class="cart-badge" id="cartBadge" style="display:none">0</div>
   </button>
 
 </div>
 
+<!-- MENU HAMBURGER -->
 <!-- MENU HAMBURGER -->
 <div class="hamburger-menu" id="hamburgerMenu">
 
@@ -64,6 +67,37 @@ NAVBAR
     <a href="#shop" onclick="toggleMenu()">Femme</a>
     <a href="#member" onclick="toggleMenu()">Membres</a>
   </div>
+
+  <!-- PANIER -->
+  <!-- PANIER -->
+<button class="ham-cart-btn" onclick="togglePanier()">
+  🛒 Panier
+  <span class="ham-cart-count" id="hamCartCount">0</span>
+</button>
+
+<!-- SOUS-PANNEAU PANIER -->
+<div class="cart-panel" id="cartPanel">
+
+  <div class="cart-panel-header">
+    <button class="cart-back-btn" onclick="togglePanier()">← Retour</button>
+    <span>Mon panier</span>
+  </div>
+
+  <div class="ham-cart-items" id="hamCartItems">
+    <p class="ham-cart-empty">Votre panier est vide.</p>
+  </div>
+
+  <div class="ham-cart-total" id="hamCartTotal" style="display:none">
+    <span>Total</span>
+    <span id="hamCartTotalPrice">0 FCFA</span>
+  </div>
+
+</div>
+
+
+
+
+
 
   <div class="ham-bottom">
     <span>Mode sombre</span>
