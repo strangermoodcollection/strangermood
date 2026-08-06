@@ -1,5 +1,3 @@
-
-
 /* ======================================================
 CONFIG
 ====================================================== */
@@ -171,6 +169,7 @@ function majAffichagePanier() {
   const itemsEl = document.getElementById('hamCartItems');
   const totalEl = document.getElementById('hamCartTotal');
   const totalPrice = document.getElementById('hamCartTotalPrice');
+  const validateBtn = document.getElementById('cartValidateBtn');
 
   const total = panier.reduce((s, i) => s + i.quantite, 0);
   const prix = panier.reduce((s, i) => s + i.prix * i.quantite, 0);
@@ -190,6 +189,7 @@ function majAffichagePanier() {
   if (panier.length === 0) {
     itemsEl.innerHTML = '<p class="ham-cart-empty">Votre panier est vide.</p>';
     totalEl.style.display = 'none';
+    validateBtn.style.display = 'none';
   } else {
     itemsEl.innerHTML = panier.map(item => `
       <div class="ham-cart-item">
@@ -207,6 +207,7 @@ function majAffichagePanier() {
     `).join('');
     totalEl.style.display = 'flex';
     totalPrice.textContent = prix.toLocaleString('fr-FR') + ' FCFA';
+    validateBtn.style.display = 'block';
   }
 
   localStorage.setItem('panier', JSON.stringify(panier));
@@ -240,10 +241,40 @@ function changerQuantite(id, delta) {
 majAffichagePanier();
 
 /* ======================================================
+VALIDER LA COMMANDE → WHATSAPP
+====================================================== */
+
+// Numéro WhatsApp qui reçoit les commandes (format international, SANS le +)
+// Exemple Côte d'Ivoire : "2250700000000"
+const WHATSAPP_NUMBER = "2250000000000"; // ⚠️ à remplacer par ton vrai numéro
+
+function validerCommande(){
+
+  if(panier.length === 0){
+    alert('Votre panier est vide.');
+    return;
+  }
+
+  let message = 'Bonjour, je souhaite commander :%0A%0A';
+
+  panier.forEach(item => {
+    const sousTotal = item.prix * item.quantite;
+    message += `• ${item.nom} x${item.quantite} — ${sousTotal.toLocaleString('fr-FR')} FCFA%0A`;
+  });
+
+  const total = panier.reduce((s, i) => s + i.prix * i.quantite, 0);
+
+  message += `%0ATotal : ${total.toLocaleString('fr-FR')} FCFA`;
+
+  window.open(`https://wa.me/2250500090411${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+
+}
+
+/* ======================================================
 CLIENT ACCESS
 ====================================================== */
 
-async function accederClient(){
+function accederClient(){
 
   const id = document
   .getElementById('clientIdInput')
@@ -253,31 +284,21 @@ async function accederClient(){
 
   if(!id) return;
 
-  try{
+  const membre = trouverMembre(id);
 
-    const r = await fetch(
-      `${API}/vetement/client/${encodeURIComponent(id)}`
-    );
+  if(membre){
 
-    if(r.ok){
-
-      window.open(
-        `${CLIENT_PAGE}?id=${encodeURIComponent(id)}&api=${encodeURIComponent(API)}`,
-        '_blank'
-      );
-
-    } else {
-
-      alert('Identifiant introuvable');
-
-    }
-
-  } catch {
+    // On stocke le membre trouvé pour que client.html puisse l'afficher
+    localStorage.setItem('membreActif', JSON.stringify(membre));
 
     window.open(
-      `${CLIENT_PAGE}?id=${encodeURIComponent(id)}&api=${encodeURIComponent(API)}`,
+      `${CLIENT_PAGE}?id=${encodeURIComponent(id)}`,
       '_blank'
     );
+
+  } else {
+
+    alert('Identifiant introuvable');
 
   }
 
@@ -308,4 +329,3 @@ document
   renderProducts(filtered);
 
 });
-
