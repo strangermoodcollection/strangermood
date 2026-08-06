@@ -70,6 +70,12 @@ NAVBAR
 
 </div>
 
+
+
+  </div>
+
+</nav>
+
 <!-- MENU HAMBURGER -->
 <!-- MENU HAMBURGER -->
 <div class="hamburger-menu" id="hamburgerMenu">
@@ -114,6 +120,10 @@ NAVBAR
      <span id="hamCartTotalPrice">0 FCFA</span>
     </div>
 
+    <button class="cart-validate-btn" id="cartValidateBtn" onclick="validerCommande()" style="display:none">
+      Valider la commande
+    </button>
+
    </div>
 
 
@@ -130,12 +140,6 @@ NAVBAR
 
 <!-- OVERLAY -->
 <div class="ham-overlay" id="hamOverlay" onclick="toggleMenu()"></div>
-
-  </div>
-
-</nav>
-
-
 
 
 <!-- SEARCH BAR -->
@@ -359,6 +363,7 @@ FOOTER
 </footer>
 
 
+<script src="membres.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
