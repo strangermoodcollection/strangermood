@@ -246,7 +246,7 @@ VALIDER LA COMMANDE → WHATSAPP
 
 // Numéro WhatsApp qui reçoit les commandes (format international, SANS le +)
 // Exemple Côte d'Ivoire : "2250700000000"
-const WHATSAPP_NUMBER = "2250000000000"; // ⚠️ à remplacer par ton vrai numéro
+const WHATSAPP_NUMBER = "2250500090411"; // ⚠️ à remplacer par ton vrai numéro
 
 function validerCommande(){
 
@@ -266,7 +266,7 @@ function validerCommande(){
 
   message += `%0ATotal : ${total.toLocaleString('fr-FR')} FCFA`;
 
-  window.open(`https://wa.me/2250500090411${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
 
 }
 
