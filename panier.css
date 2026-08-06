@@ -349,10 +349,55 @@
   color: white;
 }
 
+/* =========================================================
+   BOUTON VALIDER LA COMMANDE
+========================================================= */
+
+.cart-validate-btn {
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 999px;
+
+  padding: 14px 20px;
+  margin-top: 4px;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+
+  cursor: pointer;
+  width: 100%;
+
+  transition: transform 0.2s, background 0.2s;
+}
+
+.cart-validate-btn:hover {
+  transform: scale(1.02);
+  background: #000;
+}
+
+.dark .cart-validate-btn {
+  background: white;
+  color: #111;
+}
+
+.dark .cart-validate-btn:hover {
+  background: #eee;
+}
+
 /* touch sur mobile */
 @media(max-width:768px){
   .add-to-cart-btn {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+  }
+}
+
+
+@media(max-width:768px){
+  .cart-panel{
+    width: 82vw;
+    right: -90vw;
   }
 }
