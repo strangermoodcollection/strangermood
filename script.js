@@ -1,8 +1,80 @@
+/* ============================================================
+   PRODUITS DE LA BOUTIQUE (statique)
+   ------------------------------------------------------------
+   Pour modifier une image  → change "image_url"
+   Pour modifier un prix    → change "prix"
+   Pour modifier le nom     → change "nom"
+   Pour modifier le texte   → change "description"
+   Pour ajouter un produit  → copie un bloc { ... }, adapte-le,
+                              et donne-lui un "id" UNIQUE.
+============================================================ */
+
+/* -----------------------------------------------------------
+   GRANDES CARTES — section "Tendances du moment"
+----------------------------------------------------------- */
+
+const PRODUITS = [
+  {
+    id: 1,
+    nom: "T-shirt Slim FREEDOM",
+    description: "T-shirt slim de la collection freedom 2026",
+    prix: 3700,
+    collection: "FREEDOM",
+    image_url: "https://i.postimg.cc/B6q0mj79/IMG-6766.png"
+  },
+  {
+    id: 2,
+    nom: "Débardeur vibe street",
+    description: "Streetwear premium",
+    prix: 2900,
+    collection: "Vibe Street",
+    image_url: "https://i.postimg.cc/gjnZVd0L/image-(8).png"
+  },
+  {
+    id: 3,
+    nom: "Débardeur vibe street",
+    description: "Streetwear premium",
+    prix: 2900,
+    collection: "Vibe Street",
+    image_url: "https://i.postimg.cc/J0vBKgyj/image-(12).png"
+  }
+];
+
+/* -----------------------------------------------------------
+   MINI-CARTES SCROLLABLES — juste après le hero
+   (liste totalement indépendante des grandes cartes)
+----------------------------------------------------------- */
+
+const MINI_PRODUITS = [
+  {
+    id: "m1",
+    nom: "vibe street",
+    description: "Débardeur vibe street , Logo brodé",
+    prix: 2900,
+    collection: "Vibe Street",
+    image_url: "https://i.postimg.cc/sxqZK8B1/image-(13).png"
+  },
+  {
+    id: "m2",
+    nom: "Tshirt Over size",
+    description: " oversize , Logo brodé, design arrière DTFS",
+    prix: 9000,
+    collection: "Spirit",
+    image_url: "https://i.postimg.cc/vm3shy0B/IMG-9584.jpg"
+  },
+  {
+    id: "m3",
+    nom: "Sac banane STRANGER",
+    description: "Sac banane édition limitée",
+    prix: 3200,
+    collection: "Accessoires",
+    image_url: "https://i.postimg.cc/k4nmT21L/IMG-6767.png"
+  }
+];
+
 /* ======================================================
 CONFIG
 ====================================================== */
-
-const API = 'https://backend-xxgf.onrender.com';
 
 const CLIENT_PAGE = 'client.html';
 
@@ -77,29 +149,10 @@ if(localStorage.getItem('theme') === 'dark'){
 PRODUCTS
 ====================================================== */
 
-let allProduits = [];
+let allProduits = PRODUITS;
 
-(async () => {
-
-  try {
-
-    const r = await fetch(`${API}/vetement/produits`);
-
-    const data = await r.json();
-
-    allProduits = data.produits || [];
-
-    renderProducts(allProduits);
-
-  } catch(e){
-
-    document.querySelector('.product-grid').innerHTML = `
-      <p>Impossible de charger les produits.</p>
-    `;
-
-  }
-
-})();
+renderProducts(allProduits);
+renderMiniProducts(MINI_PRODUITS);
 
 function renderProducts(list){
 
@@ -149,6 +202,83 @@ function productCard(p){
   </div>
 
   `;
+
+}
+
+/* ======================================================
+MINI PRODUITS SCROLLABLES + CARTE AGRANDIE
+====================================================== */
+
+function renderMiniProducts(list){
+
+  document.getElementById('miniProductsScroll').innerHTML =
+  list.map(p => `
+    <div class="mini-product-card" onclick="ouvrirMiniProduitModal('${p.id}')">
+      <img
+      src="${p.image_url || 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=400'}"
+      class="mini-product-img">
+      <div class="mini-product-name">${p.nom}</div>
+      <div class="mini-product-price">${Number(p.prix || 0).toLocaleString('fr-FR')} FCFA</div>
+    </div>
+  `).join('');
+
+}
+
+function ouvrirMiniProduitModal(id){
+
+  const p = MINI_PRODUITS.find(x => x.id === id);
+  if(!p) return;
+
+  document.getElementById('productModal').innerHTML = `
+    <button class="product-modal-close" onclick="fermerProduitModal()">✕</button>
+    <img
+    src="${p.image_url}"
+    class="product-modal-img">
+    <div class="product-modal-tag">${p.collection || 'NEW'}</div>
+    <div class="product-modal-name">${p.nom}</div>
+    <div class="product-modal-desc">${p.description || ''}</div>
+    <div class="product-modal-price">${Number(p.prix || 0).toLocaleString('fr-FR')} FCFA</div>
+    <button class="product-modal-add" onclick="ajouterAuPanier('${p.id}', '${(p.nom||'').replace(/'/g,"\\'")}', ${p.prix||0}, '${p.image_url||''}')">
+      Ajouter au panier
+    </button>
+  `;
+
+  document.getElementById('productModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+}
+
+function ouvrirProduitModal(id){
+
+  const p = allProduits.find(x => x.id === id);
+  if(!p) return;
+
+  document.getElementById('productModal').innerHTML = `
+    <button class="product-modal-close" onclick="fermerProduitModal()">✕</button>
+    <img
+    src="${p.image_url || 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200'}"
+    class="product-modal-img">
+    <div class="product-modal-tag">${p.collection || 'NEW'}</div>
+    <div class="product-modal-name">${p.nom}</div>
+    <div class="product-modal-desc">${p.description || 'Streetwear premium'}</div>
+    <div class="product-modal-price">${Number(p.prix || 0).toLocaleString('fr-FR')} FCFA</div>
+    <button class="product-modal-add" onclick="ajouterAuPanier(${p.id}, '${(p.nom||'').replace(/'/g,"\\'")}', ${p.prix||0}, '${p.image_url||''}')">
+      Ajouter au panier
+    </button>
+  `;
+
+  document.getElementById('productModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+}
+
+function fermerProduitModal(event){
+
+  // Si on clique DANS la carte, on ne ferme pas — seulement clic en dehors ou bouton ✕
+  if(event && event.target.id !== 'productModalOverlay') return;
+
+  document.getElementById('productModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
 
 }
 
