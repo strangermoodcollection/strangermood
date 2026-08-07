@@ -401,3 +401,200 @@
     right: -90vw;
   }
 }
+
+
+/* =========================================================
+   MODAL INFOS LIVRAISON
+========================================================= */
+
+.order-info-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.order-info-overlay.open {
+  display: flex;
+}
+
+.order-info-modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 380px;
+  max-height: 85vh;
+  overflow-y: auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.dark .order-info-modal {
+  background: #161616;
+  color: white;
+}
+
+.order-info-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+.dark .order-info-title {
+  color: white;
+}
+
+.order-info-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.order-info-option {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.order-info-option:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.dark .order-info-option {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.dark .order-info-option:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.order-info-select,
+.order-info-input,
+.order-info-textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 14px;
+  background: #fff;
+  color: #111;
+}
+
+.dark .order-info-select,
+.dark .order-info-input,
+.dark .order-info-textarea {
+  background: #222;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.order-info-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.order-info-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.order-info-back {
+  background: none;
+  border: none;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+  padding: 12px 0;
+}
+
+.dark .order-info-back {
+  color: #aaa;
+}
+
+.order-info-next {
+  flex: 1;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 13px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dark .order-info-next {
+  background: white;
+  color: #111;
+}
+
+.order-info-recap {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #111;
+}
+
+.dark .order-info-recap {
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+
+
+
+.order-info-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dark .order-info-close {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.order-info-modal {
+  position: relative;
+}
+
+.order-info-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-info-option svg {
+  flex-shrink: 0;
+  opacity: 0.75;
+}
