@@ -457,6 +457,41 @@ footer{
   color:#666;
 }
 
+
+.footer-socials{
+  display:flex;
+  gap:14px;
+}
+
+.social-icon{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#f2f2f2;
+
+  transition:transform 0.2s;
+}
+
+.social-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.social-icon:hover{
+  transform:scale(1.08);
+}
+
+.dark .social-icon{
+  background:#1a1a1a;
+}
+
 .footer-bottom{
   width:min(1400px,92%);
   margin:auto;
