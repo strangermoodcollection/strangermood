@@ -383,7 +383,7 @@ VALIDER LA COMMANDE → WHATSAPP
 
 // Numéro WhatsApp qui reçoit les commandes (format international, SANS le +)
 // Exemple Côte d'Ivoire : "2250700000000"
-const WHATSAPP_NUMBER = "2250500090411"; // ⚠️ à remplacer par ton vrai numéro
+const WHATSAPP_NUMBER = "2250576754871"; // ⚠️ à remplacer par ton vrai numéro
 
 /* ======================================================
 INFOS LIVRAISON — avant envoi WhatsApp
