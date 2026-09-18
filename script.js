@@ -66,7 +66,7 @@ const MINI_PRODUITS = [
     id: "m3",
     nom: "T-shirt Slim",
     description: "",
-    prix: 3200,
+    prix: 4800,
     collection: "FREEDOM",
     image_url: "https://i.postimg.cc/k4nmT21L/IMG-6767.png"
   }
