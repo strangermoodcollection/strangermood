@@ -28,6 +28,10 @@ export default function Navigation({
             <li>
               <a href="#member">Membres</a>
             </li>
+
+            <li>
+              <a href="magazine.html">Magazine</a>
+             </li>
           </ul>
           <div className="nav-actions">
             <button
@@ -68,6 +72,12 @@ export default function Navigation({
           <a href="#member" onClick={toggleMenu}>
             Membres
           </a>
+
+
+          <a href="magazine.html" onClick={toggleMenu}>
+            Magazine
+           </a>
+
         </div>
 
         <button className="ham-cart-btn" onClick={toggleCart}>
@@ -107,9 +117,30 @@ export default function Navigation({
         />
         <div className="ham-bottom">
           <span>Mode sombre</span>
-          <button className="theme-btn" onClick={toggleTheme}>
-            🌙
-          </button>
+
+
+          <button
+  className="theme-btn"
+  onClick={toggleTheme}
+  aria-label="Changer le thème"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.7"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M20.9 13.1A9 9 0 0 1 10.9 3.1a9 9 0 1 0 10 10Z" />
+  </svg>
+</button>
+
+
         </div>
       </div>
       <div

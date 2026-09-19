@@ -39,27 +39,55 @@ nav{
   padding-top: env(safe-area-inset-top);
 }
 
-.nav-container{
-  width:min(1400px,92%);
-  margin:auto;
+.nav-container {
+  width: min(1400px, 92%);
+  margin: auto;
+  height: 72px;
 
-  height:72px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 16px;
 }
 
 .logo{
   font-size:1.2rem;
   font-weight:800;
   letter-spacing:-0.04em;
+
+  flex-shrink: 0;
 }
 
-.nav-links{
-  display:flex;
-  gap:32px;
-  list-style:none;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  flex: 1 1 0;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-links > li {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.nav-links a {
+  display: block;
+  padding: 12px 0;
 }
 
 .nav-links a{
@@ -73,6 +101,8 @@ nav{
   display:flex;
   align-items:center;
   gap:16px;
+
+  flex-shrink: 0;
 }
 
 .theme-btn{
@@ -88,6 +118,9 @@ nav{
   cursor:pointer;
 
   font-size:1rem;
+
+
+  
 }
 
 /* =========================================================
@@ -512,9 +545,8 @@ footer{
 
 @media(max-width:768px){
 
-  .nav-links{
-    display:none;
-  }
+    
+
 
   .hero-content{
     left:24px;
@@ -743,7 +775,7 @@ body:not(.dark) .search-bar input::placeholder{
 
   .search-wrapper{
 
-    top:78px;
+    top: 78px;
 
     width:94%;
 

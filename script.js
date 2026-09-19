@@ -58,7 +58,7 @@ const MINI_PRODUITS = [
     id: "m2",
     nom: "Tshirt Over size",
     description: " oversize , Logo brodé, design arrière DTFS",
-    prix: 9000,
+    prix: 9000,git 
     collection: "Spirit",
     image_url: "https://i.postimg.cc/vm3shy0B/IMG-9584.jpg"
   },

@@ -16,23 +16,95 @@
 
 export const MEMBRES = [
   {
-    id: "SM-0001",
-    nom: "Jean Kouassi",
+    id: "SM-9637",
+    nom: "ABE Désiré",
     statut: "Membre Gold",
-    dateAdhesion: "12/01/2026",
+    dateAdhesion: "10/09/2026",
     reduction: "15%",
     photo:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400",
+
+    commandes: [
+      {
+        numero: "CMD-0001",
+        date: "2026-09-10",
+        produits: [
+          {
+            nom: "T-shirt Slim FREEDOM",
+            image: "https://i.postimg.cc/B6q0mj79/IMG-6766.png",
+            quantite: 1,
+            prixUnitaire: 4800,
+          },
+          {
+            nom: "Débardeur vibe street",
+            image: "https://i.postimg.cc/sxqZK8B1/image-(13).png",
+            quantite: 1,
+            prixUnitaire: 2900,
+          },
+        ],
+      },
+      
+      
+    ],
   },
+
+
   {
-    id: "SM-0002",
-    nom: "Aïcha Traoré",
+    id: "SM-5190",
+    nom: "Joseph Amani",
     statut: "Membre Silver",
-    dateAdhesion: "03/03/2026",
-    reduction: "10%",
+    dateAdhesion: "16/09/2026",
+    reduction: "18%",
     photo:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400",
+      "",
+
+    commandes: [
+      {
+        numero: "CMD-0001",
+        date: "2026-09-10",
+        produits: [
+          {
+            nom: "T-shirt Slim FREEDOM",
+            image: "https://i.postimg.cc/B6q0mj79/IMG-6766.png",
+            quantite: 1,
+            prixUnitaire: 4800,
+          },
+          
+        ],
+      },
+    ],
   },
+
+
+
+
+  
+  {
+    id: "999",
+    nom: "999",
+    statut: "Membre Gold",
+    dateAdhesion: "17/01/2021",
+    reduction: "50%",
+    photo:
+      "https://i.postimg.cc/wx2dwhBV/IMG-3106.jpg",
+
+    commandes: [
+      {
+        numero: "CMD-0001",
+        date: "2026-09-10",
+        produits: [
+          {
+            nom: "T-shirt Slim FREEDOM",
+            image: "https://i.postimg.cc/B6q0mj79/IMG-6766.png",
+            quantite: 1,
+            prixUnitaire: 4800,
+          },
+          
+        ],
+      },
+    ],
+  },
+
 ];
 
 /* Cherche un membre par id (insensible à la casse) */

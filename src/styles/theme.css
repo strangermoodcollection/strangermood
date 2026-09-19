@@ -1,0 +1,522 @@
+/* ==================================================
+   1. VARIABLES COMMUNES — MODE CLAIR
+   Modifie les valeurs ici pour ajuster le thème.
+================================================== */
+
+body.sm-theme {
+  --sm-font: "Inter", sans-serif;
+
+  /* Couleurs principales */
+  --sm-bg: #f4f4f4;
+  --sm-text: #171717;
+  --sm-muted: #646464;
+
+  /* Surfaces */
+  --sm-surface: #ffffff;
+  --sm-soft: #ebebeb;
+  --sm-glass: rgba(255, 255, 255, 0.86);
+  --sm-glass-strong: rgba(255, 255, 255, 0.95);
+
+  /* Bordures et champs */
+  --sm-border: rgba(0, 0, 0, 0.09);
+  --sm-field-border: rgba(0, 0, 0, 0.2);
+  --sm-hover: rgba(0, 0, 0, 0.06);
+
+  /* Boutons principaux */
+  --sm-action: #171717;
+  --sm-action-text: #ffffff;
+  --sm-action-hover: #333333;
+
+  /* Notifications du panier */
+  --sm-notice: #e53935;
+  --sm-notice-text: #ffffff;
+
+  /* Éléments toujours noirs ou blancs */
+  --sm-white: #ffffff;
+  --sm-black: #111111;
+
+  /* Carte membre */
+  --sm-card-bg:
+    linear-gradient(125deg, #303030, #141414 58%, #202020);
+  --sm-card-border: rgba(255, 255, 255, 0.15);
+  --sm-card-shadow: 0 22px 60px rgba(0, 0, 0, 0.16);
+  --sm-logo-gray: #b8b8b8;
+
+  /* Profondeur */
+  --sm-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
+  --sm-shadow-floating: 0 24px 70px rgba(0, 0, 0, 0.14);
+  --sm-overlay: rgba(0, 0, 0, 0.46);
+  --sm-glow: rgba(160, 160, 160, 0.12);
+
+  /* Formes et effets */
+  --sm-radius-small: 14px;
+  --sm-radius-medium: 22px;
+  --sm-radius-large: 28px;
+  --sm-radius-pill: 999px;
+
+  --sm-blur: 20px;
+  --sm-speed: 180ms;
+
+  color-scheme: light;
+}
+
+/* ==================================================
+   2. MODE SOMBRE
+================================================== */
+
+body.sm-theme.dark {
+  --sm-bg: #0b0b0b;
+  --sm-text: #f5f5f5;
+  --sm-muted: #aaaaaa;
+
+  --sm-surface: #191919;
+  --sm-soft: #222222;
+  --sm-glass: rgba(22, 22, 22, 0.88);
+  --sm-glass-strong: rgba(22, 22, 22, 0.96);
+
+  --sm-border: rgba(255, 255, 255, 0.11);
+  --sm-field-border: rgba(255, 255, 255, 0.24);
+  --sm-hover: rgba(255, 255, 255, 0.08);
+
+  --sm-action: #f5f5f5;
+  --sm-action-text: #111111;
+  --sm-action-hover: #dddddd;
+
+  --sm-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
+  --sm-shadow-floating: 0 24px 70px rgba(0, 0, 0, 0.38);
+  --sm-overlay: rgba(0, 0, 0, 0.62);
+  --sm-glow: rgba(160, 160, 160, 0.06);
+
+  color-scheme: dark;
+}
+
+/* ==================================================
+   3. FOND ET TYPOGRAPHIE
+================================================== */
+
+body.sm-theme {
+  font-family: var(--sm-font);
+  color: var(--sm-text);
+  background:
+    radial-gradient(
+      ellipse at 15% 0%,
+      var(--sm-glow),
+      transparent 55%
+    ),
+    var(--sm-bg);
+}
+
+body.sm-theme :is(button, input, select, textarea) {
+  font-family: var(--sm-font);
+}
+
+body.sm-theme :is(
+  .nav-links a,
+  .ham-links a,
+  .ham-bottom,
+  .cart-panel-header,
+  .ham-cart-name,
+  .ham-cart-actions span,
+  .ham-cart-total,
+  .order-info-title
+) {
+  color: var(--sm-text);
+}
+
+body.sm-theme :is(
+  .section-sub,
+  .product-category,
+  .mini-product-price,
+  .product-modal-desc,
+  .footer-links a,
+  .footer-bottom,
+  .member-desc,
+  .ham-cart-empty,
+  .ham-cart-price,
+  .cart-back-btn,
+  .order-info-back
+) {
+  color: var(--sm-muted);
+}
+
+/* ==================================================
+   4. SURFACES EN VERRE
+================================================== */
+
+body.sm-theme :is(
+  nav,
+  .search-bar,
+  .hamburger-menu,
+  .cart-panel,
+  .product-modal,
+  .order-info-modal
+  
+) {
+  color: var(--sm-text);
+  background: var(--sm-glass);
+  border-color: var(--sm-border);
+
+  -webkit-backdrop-filter: blur(var(--sm-blur));
+  backdrop-filter: blur(var(--sm-blur));
+}
+
+body.sm-theme :is(.product-modal, .order-info-modal) {
+  background: var(--sm-glass-strong);
+  border: 1px solid var(--sm-border);
+  border-radius: var(--sm-radius-large);
+  box-shadow: var(--sm-shadow-floating);
+}
+
+body.sm-theme :is(.hamburger-menu, .cart-panel) {
+  box-shadow: var(--sm-shadow-floating);
+}
+
+body.sm-theme .search-bar {
+  border: 1px solid var(--sm-border);
+  box-shadow: var(--sm-shadow);
+}
+
+body.sm-theme .search-bar:hover {
+  background: var(--sm-glass-strong);
+  transform: none;
+}
+
+body.sm-theme .member-box {
+  background: var(--sm-black);
+  color: var(--sm-white);
+  border: none;
+  border-radius: 40px;
+  box-shadow: none;
+}
+
+body.sm-theme :is(
+  .ham-overlay,
+  .product-modal-overlay,
+  .order-info-overlay
+) {
+  background: var(--sm-overlay);
+}
+
+/* ==================================================
+   5. CHAMPS DE SAISIE
+================================================== */
+
+body.sm-theme :is(.search-bar input, .search-bar svg) {
+  color: var(--sm-text);
+}
+
+body.sm-theme :is(
+  
+  .order-info-input,
+  .order-info-select,
+  .order-info-textarea
+) {
+  color: var(--sm-text);
+  background: var(--sm-surface);
+  border: 1px solid var(--sm-field-border);
+}
+
+
+
+body.sm-theme .member-input {
+  background: var(--sm-white);
+  color: var(--sm-black);
+  border: none;
+}
+
+body.sm-theme :is(
+  .order-info-input,
+  .order-info-select,
+  .order-info-textarea
+) {
+  border-radius: var(--sm-radius-small);
+}
+
+body.sm-theme :is(
+  .search-bar input,
+  .member-input,
+  .order-info-input,
+  .order-info-textarea
+)::placeholder {
+  color: var(--sm-muted);
+  opacity: 1;
+}
+
+body.sm-theme .order-info-select option {
+  color: var(--sm-text);
+  background: var(--sm-surface);
+}
+
+/* Contour visible lors de la navigation au clavier */
+body.sm-theme :is(
+  button,
+  a,
+  input:not(#searchInput),
+  select,
+  textarea,
+  [tabindex="0"]
+):focus-visible {
+    outline: none;
+}
+
+
+/* ==================================================
+   6. BOUTONS PRINCIPAUX
+================================================== */
+
+body.sm-theme :is(
+  .member-btn,
+  .product-modal-add,
+  .cart-validate-btn,
+  .order-info-next,
+  .sm-member-shop,
+  .error-box a
+) {
+  color: var(--sm-action-text);
+  background: var(--sm-action);
+  border: 1px solid transparent;
+  border-radius: var(--sm-radius-pill);
+
+  transition:
+    background var(--sm-speed) ease,
+    box-shadow var(--sm-speed) ease;
+}
+
+body.sm-theme :is(
+  .member-btn,
+  .product-modal-add,
+  .cart-validate-btn,
+  .order-info-next,
+  .sm-member-shop,
+  .error-box a
+):hover {
+  background: var(--sm-action-hover);
+}
+
+/* Boutons placés sur la grande photo */
+body.sm-theme .btn-white {
+  background: var(--sm-white);
+  color: var(--sm-black);
+}
+
+body.sm-theme .btn-dark {
+  background: var(--sm-black);
+  color: var(--sm-white);
+}
+
+/* ==================================================
+   7. COMMANDES SECONDAIRES ET PANIER
+================================================== */
+
+body.sm-theme :is(
+  .theme-btn,
+  .burger-btn,
+  .product-modal-close,
+  .order-info-close,
+  .ham-cart-actions button,
+  .ham-cart-btn,
+  .order-info-option
+) {
+  color: var(--sm-text);
+  background: var(--sm-soft);
+  border: 1px solid var(--sm-border);
+}
+
+body.sm-theme :is(
+  .theme-btn,
+  .burger-btn,
+  .product-modal-close,
+  .order-info-close,
+  .ham-cart-actions button,
+  .ham-cart-btn,
+  .order-info-option
+):hover {
+  background: var(--sm-hover);
+}
+
+body.sm-theme .burger-btn span {
+  background: var(--sm-text);
+}
+
+body.sm-theme :is(.ham-cart-item, .order-info-recap) {
+  color: var(--sm-text);
+  background: var(--sm-soft);
+  border-radius: var(--sm-radius-small);
+}
+
+body.sm-theme :is(
+  .ham-bottom,
+  .ham-cart-total,
+  .cart-panel-header,
+  .footer-top
+) {
+  border-color: var(--sm-border);
+}
+
+body.sm-theme :is(.cart-badge, .ham-cart-count) {
+  color: var(--sm-notice-text);
+  background: var(--sm-notice);
+}
+
+body.sm-theme .cart-badge {
+  border-color: var(--sm-bg);
+}
+
+body.sm-theme :is(.cart-back-btn, .order-info-back):hover {
+  color: var(--sm-text);
+}
+
+/* ==================================================
+   8. PRODUITS
+================================================== */
+
+body.sm-theme :is(.product-image-wrap, .mini-product-img) {
+  background: var(--sm-soft);
+}
+
+body.sm-theme .product-image-wrap {
+  border-radius: var(--sm-radius-medium);
+}
+
+body.sm-theme .mini-product-img {
+  border-radius: var(--sm-radius-small);
+}
+
+body.sm-theme :is(.product-tag, .add-to-cart-btn) {
+  color: var(--sm-text);
+  background: var(--sm-glass-strong);
+  border: 1px solid var(--sm-border);
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+body.sm-theme .product-modal-tag {
+  color: var(--sm-text);
+  background: var(--sm-soft);
+}
+
+body.sm-theme .social-icon {
+  background: var(--sm-soft);
+}
+
+/* Afficher aussi Acheter lorsque la carte reçoit le focus */
+body.sm-theme .product-card:focus-within .add-to-cart-btn {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Appareils tactiles, quelle que soit leur largeur */
+@media (hover: none) {
+  body.sm-theme .add-to-cart-btn {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ==================================================
+   9. ESPACE MEMBRE : MÊMES VARIABLES QUE LA BOUTIQUE
+================================================== */
+
+body.sm-theme.member-dashboard {
+  --member-bg: var(--sm-bg);
+  --member-text: var(--sm-text);
+  --member-muted: var(--sm-muted);
+  --member-panel: var(--sm-glass);
+  --member-border: var(--sm-border);
+  --member-image-bg: var(--sm-soft);
+  --member-shadow: var(--sm-shadow);
+
+  color: var(--sm-text);
+  background:
+    radial-gradient(
+      ellipse at 15% 0%,
+      var(--sm-glow),
+      transparent 55%
+    ),
+    var(--sm-bg);
+}
+
+body.sm-theme .sm-membership {
+  color: var(--sm-white);
+  background: var(--sm-card-bg);
+  border-color: var(--sm-card-border);
+  border-radius: var(--sm-radius-large);
+  box-shadow: var(--sm-card-shadow);
+}
+
+body.sm-theme .sm-membership-watermark {
+  color: var(--sm-logo-gray);
+}
+
+body.sm-theme :is(
+  .sm-member-benefit,
+  .sm-member-order,
+  .sm-member-empty
+) {
+  border-radius: var(--sm-radius-large);
+  -webkit-backdrop-filter: blur(var(--sm-blur));
+  backdrop-filter: blur(var(--sm-blur));
+}
+
+body.sm-theme .sm-member-stats {
+  border-radius: var(--sm-radius-medium);
+}
+
+/* ==================================================
+   10. ACCESSIBILITÉ ET COMPATIBILITÉ
+================================================== */
+
+/* Surface opaque si le navigateur ne gère pas le flou */
+@supports not (
+  (backdrop-filter: blur(1px)) or
+  (-webkit-backdrop-filter: blur(1px))
+) {
+  body.sm-theme :is(
+    nav,
+    .search-bar,
+    .hamburger-menu,
+    .cart-panel,
+    .product-modal,
+    .order-info-modal,
+    
+    .product-tag,
+    .add-to-cart-btn,
+    .sm-member-benefit,
+    .sm-member-stats,
+    .sm-member-order,
+    .sm-member-empty
+  ) {
+    background: var(--sm-surface);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body.sm-theme *,
+  body.sm-theme *::before,
+  body.sm-theme *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+} 
+
+/* Barre de recherche : flou réduit et fond plus clair */
+body.sm-theme .search-bar,
+body.sm-theme .search-bar:hover {
+  background: rgba(175, 175, 185, 0.575);
+
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Mode sombre : gris plus clair */
+body.sm-theme.dark .search-bar,
+body.sm-theme.dark .search-bar:hover {
+  background: rgba(8, 8, 8, 0.65);
+}

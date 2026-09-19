@@ -10,6 +10,8 @@ export default defineConfig({
       input: {
         boutique: fileURLToPath(new URL("./index.html", import.meta.url)),
         client: fileURLToPath(new URL("./client.html", import.meta.url)),
+
+        magazine: fileURLToPath(new URL("./magazine.html", import.meta.url)),
       },
     },
   },
