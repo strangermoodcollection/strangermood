@@ -105,6 +105,37 @@ export const MEMBRES = [
     ],
   },
 
+
+
+
+
+
+  {
+    id: "667",
+    nom: "Stan Ogochumaru",
+    statut: "Membre Gold",
+    dateAdhesion: "11/09/2025",
+    reduction: "15%",
+    photo:
+      "https://i.postimg.cc/4dY9Xj0S/Whats-App-Image-2026-09-19-at-2-32-55-PM.jpg",
+
+    commandes: [
+      {
+        numero: "CMD-0001",
+        date: "2026-09-10",
+        produits: [
+          {
+            nom: "T-shirt Slim FREEDOM",
+            image: "https://i.postimg.cc/B6q0mj79/IMG-6766.png",
+            quantite: 1,
+            prixUnitaire: 4800,
+          },
+          
+        ],
+      },
+    ],
+  },
+
 ];
 
 /* Cherche un membre par id (insensible à la casse) */
